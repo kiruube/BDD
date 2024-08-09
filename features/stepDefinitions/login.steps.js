@@ -1,4 +1,5 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
+const assert = require('assert');
 
 //Steps for successful login 
     Given('I am on the login page', function() {
@@ -20,4 +21,22 @@ const { Given, When, Then } = require('@cucumber/cucumber');
     
     Then('I remain on the login page', function() {
         console.log('Then I remain on the login page');
+    });
+
+    let answer = 0;
+
+    Given('i start with {int}', function(input){
+        answer = input;
+    });
+    
+    When('i add {int}', function(input){
+        answer += input;
+    });
+    
+    Then('i end up with {int}', function(input){
+        assert.equal(answer, input);
+    });
+
+    When('i multiply by {int}', function(input){
+        answer *= input;	
     });
